@@ -1,7 +1,11 @@
 #include <stdio.h>
-int main()
+/**
+ * main - this is a print function to print a statement
+ *
+ * Return: always retun 0
+ */
+int main (void)
 {
-	char word[] = "\"Programming is like building a multilingual puzzle";
-	puts(word);
-	return 0	
-}	
+	printf("with proper grammar, but the outcome is a piece of art,\n");
+	return (0);
+}
