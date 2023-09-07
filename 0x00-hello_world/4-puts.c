@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/*
+/**
  * main - this is a puts function
  * @void: takes in a void argument
  *
