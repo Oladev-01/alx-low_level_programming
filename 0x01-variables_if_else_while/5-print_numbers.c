@@ -13,7 +13,7 @@ int main(void)
 
 	int i = 0;
 
-	if (i < 10)
+	while (i <= 9)
 
 	{
 		printf("%d", i);
@@ -21,13 +21,8 @@ int main(void)
 		i++;
 
 	}
+	printf("\n");
 
-	else
-
-	{
-		printf("0");
-
-	}
 
 	return (0);
 
