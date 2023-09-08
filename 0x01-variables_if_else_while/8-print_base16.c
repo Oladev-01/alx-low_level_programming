@@ -11,13 +11,14 @@ int main(void)
 
 {
 	int i = 0;
+
 	char lekan = 'a';
 
 
 	while (i <= 9)
 
 	{
-		putchar(i);
+		putchar(i + '0');
 
 			i++;
 
