@@ -3,7 +3,7 @@
 /**
  * main - this function is one that returns output to standard error
  *
- * Return: always return 1i
+ * Return: always return 1
  */
 int main(void)
 {
