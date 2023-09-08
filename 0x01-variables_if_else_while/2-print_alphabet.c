@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * maim - this function is for printing alphabets
+ * main - this function is for printing alphabets
  *
  * Return: will return 0 for success
  */
@@ -11,7 +11,7 @@ int main(void)
 
 	i = 'a';
 
-	while(i <= 'z')
+	while (i <= 'z')
 
 	{
 		putchar(i);
