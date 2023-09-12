@@ -6,7 +6,7 @@
  *
  *Return: this should return 0 for success
 */
- int _isalpha(int c)
+int _isalpha(int c)
 {
 	if (c >= 'a' && c <= 'z')
 	{
