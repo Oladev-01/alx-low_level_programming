@@ -13,7 +13,7 @@
 	while (me <= 10)
 
 	{
-		for (you = 'a'; you = 'z'; you++)
+		for (you = 'a'; you <= 'z'; you++)
 		{
 		_putchar(you);
 
