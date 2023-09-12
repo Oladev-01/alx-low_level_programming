@@ -18,7 +18,8 @@
 		_putchar(you);
 
 		}
+		me++;
 	}
 	_putchar('\n');
-	me++;
+
 }
