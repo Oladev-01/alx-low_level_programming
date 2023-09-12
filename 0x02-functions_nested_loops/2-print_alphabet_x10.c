@@ -10,7 +10,7 @@
 	int me = 0;
 	char you;
 
-	while (me <= 10)
+	while (me < 10)
 
 	{
 		for (you = 'a'; you <= 'z'; you++)
