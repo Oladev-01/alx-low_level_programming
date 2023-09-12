@@ -1,8 +1,8 @@
-#include <main.h>
+#include "main.h"
 /**
  * main - this program prints a statement
  *
- * return: this should return 1 for succcess
+ * return: this should return 0 for succcess
  */
 int main(void)
 {
@@ -15,6 +15,6 @@ int main(void)
 	_putchar('a');
 	_putchar('r');
 
-	return (1);
+	return (0);
 }
 
