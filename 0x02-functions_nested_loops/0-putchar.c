@@ -2,7 +2,7 @@
 /**
  * main - this program prints a statement
  *
- * return: this should return 0 for succcess
+ *Return: this should return 0 for succcess
  */
 int main(void)
 {
