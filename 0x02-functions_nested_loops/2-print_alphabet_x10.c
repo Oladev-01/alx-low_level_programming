@@ -11,7 +11,8 @@
 	char you;
 
 	while (me <= 10)
-		me++;
+
+
 	{
 		for (you = 'a'; you <= 'z'; you++)
 		{
@@ -19,4 +20,5 @@
 		}
 	}
 	_putchar('\n');
+	me++;
 }
