@@ -12,11 +12,11 @@
 
 	while (me <= 10)
 
-
 	{
-		for (you = 'a'; you <= 'z'; you++)
+		while (you <= 'z')
 		{
-			_putchar(you);
+		_putchar(you);
+		you++;
 		}
 	}
 	_putchar('\n');
