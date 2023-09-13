@@ -17,9 +17,8 @@ int print_last_digit(int f)
 	}
 	else if (g < 0)
 	{
-		int r
-		r = -g
-			_putchar(r +0');
+		g = -g
+			_putchar(g +0');
 	}
 	return (0);
 }
