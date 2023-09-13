@@ -7,7 +7,7 @@ int main(void)
 {
 	int a, b;
 
-	z = 0;
+	b = 0;
 
 	while (a < 1024)
 	{
