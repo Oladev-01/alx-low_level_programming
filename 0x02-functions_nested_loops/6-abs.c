@@ -11,12 +11,14 @@ int _abs(int j)
 
 	if (j < 0)
 	{
-		int lekan = j * -1;
+		int leg;
+		leg = -j;
 
-		return (lekan);
+		return (leg);
 	}
+		return (j);
 
-	return (0);
+
 }
 
 
