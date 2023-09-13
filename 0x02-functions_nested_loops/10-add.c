@@ -7,7 +7,7 @@
  */
 int add(int a, int b)
 {
-	int sum
+	int sum = a + b;
 
 	a = a % 10;
 	b = b % 10;
