@@ -13,11 +13,14 @@ int _abs(int j)
 	{
 		int leg;
 
-		leg = -j;
+		leg = j * -1;
 
 		return (leg);
 	}
+	else
+	{
 		return (j);
+	}
 
 
 }
