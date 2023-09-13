@@ -12,6 +12,7 @@ int _abs(int j)
 	if (j < 0)
 	{
 		int leg;
+
 		leg = -j;
 
 		return (leg);
