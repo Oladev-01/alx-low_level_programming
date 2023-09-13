@@ -14,13 +14,8 @@ int print_last_digit(int f)
 		if (g < 0)
 		{
 			g = -g;
-			return (g);
 		}
-
-		else if (g > 0)
-
-		return (g);
-
-	return (0);
+		_putchar(g + '0');
+			return (g);
 }
 
