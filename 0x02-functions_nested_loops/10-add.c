@@ -12,7 +12,7 @@ int add(int a, int b)
 	a = a % 10;
 	b = b % 10;
 
-	_putchar(sum +'0');
+	_putchar(sum + '0');
 	return (sum);
 }
 
