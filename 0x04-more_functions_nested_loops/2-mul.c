@@ -2,15 +2,15 @@
 /**
  *mul - entry point
  *
- *@b: first integer
- *@c: second integer
+ *@a: first integer
+ *@b: second integer
  *Return: return 0
  */
-
-int mul(int a, int b)
+int mul(int a, b)
 {
-  int c = a * b;
-  
-  putchar(c + '0');
-  return 0;
+	int c = a * b;
+
+	_putchar(c + '0');
+	_putchar('\n');
+	return (0);
 }
