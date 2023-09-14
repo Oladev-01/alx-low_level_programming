@@ -10,15 +10,15 @@ int main(void)
 
 	for (a = 1; a < 101; a++)
 	{
-	if (a % 10 == 3)
+	if (a % 3 == 0)
 	{
 		printf("Fizz ");
 	}
-	else if (a % 10 == 5)
+	else if (a % 5 == 0)
 	{
 		printf("Buzz ");
 	}
-	else if (a % 10 == 3 && a % 10 == 5)
+	else if (a % 3 == 0 && a % 5 == 0)
 	{
 		printf("FizzBuzz ");
 	}
