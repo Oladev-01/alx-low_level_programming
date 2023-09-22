@@ -10,11 +10,11 @@ int i;
 
 	for  (i = 0; *str != '\0'; i++)
 	{
-		if (*str == 0 || *str % 2 == 0)
+		if (i == 0 || i % 2 == 0)
 		{
 			_putchar(*str);
-			str++;
 		}
+		str++;
 	}
 	_putchar('\n');
 }
