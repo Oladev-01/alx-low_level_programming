@@ -1,22 +1,47 @@
 #include "main.h"
 /**
- *rev_string - entry
- *@s: string
- *Return: 0
+ * _strlen - function to return the string length
+ * @s: string
+ *
+ *Return: length
  */
+int _strlen(char *s)
+/* this variable is a temp var for the first index*/
+{
+	int i;
+
+	for (i = 0; *s != '\0'; i++)
+	{
+	s++;
+	}
+	return (i); /* this will return the string length*/
+}
+/**
+ *rev_string - entry function
+ *@s: string
+ *
+ *Return: null
+ */
+/* this variable is a temp var for the first index*/
 void rev_string(char *s)
 {
-	char a = s[0];
-	int b = 0;
-	int c;
+/* this variable is a temp var for the first index*/
+	int len, l, a;
+	char  hold; /* this variable is a temp var for the first index*/
 
-	while (s[b] != '\0')
-		b++;
-	for (c = 0; c < b; c++)
+	a = 0;
+	len = _strlen(s);
+	l = len - 1;
+
+	while (a < l)
 	{
-		b--;
-		a = s[c];
-		s[c] = s[b];
-		s[b] = a;
+		hold = s[a];
+		s[a] = s[l]; /* making the swap*/
+		s[l] = hold;
+		a++;
+		l--;
 	}
+
+
 }
+
