@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 /**
  *_strlen - entry
  *@s: string
@@ -38,4 +38,5 @@ void puts_half(char *str)
 		}
 		half++;
 	}
+	_putchar('\n');
 }
