@@ -6,10 +6,10 @@
  */
 int _atoi(char *s)
 {
-	int a, sign = 1, space = 1, integer = 0;
+	int a = 0, sign = 1, space = 1, integer = 0;
 	unsigned int result = 0;
 
-	for (a = 0; *s != '\0'; a++)
+	while (s[a])
 	{
 		if (s[a] == 32)
 		{
