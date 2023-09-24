@@ -6,16 +6,12 @@
  */
 int _atoi(char *s)
 {
-	int a = 0, sign = 1, space = 1, integer = 0;
+	int a = 0, sign = 1, integer = 0;
 	unsigned int result = 0;
 
 	while (s[a])
 	{
-		if (s[a] == 32)
-		{
-			space *= 1;
-		}
-		else if (s[a] == 45)
+		if (s[a] == 45)
 		{
 			sign *= -1;
 		}
