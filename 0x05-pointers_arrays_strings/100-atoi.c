@@ -19,10 +19,11 @@ int _atoi(char *s)
 		{
 			sign *= -1;
 		}
-		else if (s[a] >= 48 && s[a] <= 57)
+		while (s[a] >= 48 && s[a] <= 57)
 		{
 			integer = 1;
 			result = (result * 10) + (s[a] - '0');
+			a++;
 		}
 		else if (integer == 1)
 		{
