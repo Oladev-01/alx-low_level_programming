@@ -7,14 +7,15 @@
  */
 char *_strchr(char *s, char c)
 {
+	int index = 0;
 
-	while (*s != '\0')
+	while (s[index] >= '\0')
 	{
-		if (*s == c)
+		if (s[index] == c)
 		{
-			return (s++);
+			return (&s[index]);
 		}
-		s++;
+		index++;
 	}
 	return (0);
 }
