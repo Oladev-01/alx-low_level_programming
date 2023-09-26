@@ -8,7 +8,7 @@ int main(void)
 {
 	int a = 1;
 	int b = 2;
-	int hold;
+	unsigned int hold;
 	int count = 2;
 
 	printf("%d, %d, ", a, b);
@@ -18,11 +18,11 @@ int main(void)
 
 		if (count == 97)
 		{
-			printf("%d\n", hold);
+			printf("%u\n", hold);
 		}
 		else
 		{
-			printf("%d, ", hold);
+			printf("%u, ", hold);
 		}
 
 		a = b;
