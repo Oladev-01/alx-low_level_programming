@@ -21,9 +21,9 @@ char *_strdup(char *str)
 	{
 		return (NULL);
 	}
-	else if (s == NULL)
+	if (s == NULL)
 	{
-		return (NULL);
+		exit(1);
 	}
 	while (a < len)
 	{
