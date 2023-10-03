@@ -16,19 +16,19 @@ char *_strdup(char *str)
 	int a = 0;
 	char *s;
 
-	s = (char *)malloc((len + 1) * sizeof(*str));
 	if (str == NULL)
 	{
 		return (NULL);
 	}
-	if (s == NULL)
-	{
-		exit(1);
-	}
+	s = (char *)malloc((len + 1) * sizeof(*str));
 	while (a < len)
 	{
 		s[a] = str[a];
 		a++;
+	}
+	if (s == NULL)
+	{
+		return (NULL);
 	}
 	return (s);
 }
