@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
 	int sum = 0;
-	int i;
+	int i, a, num;
 
 	if (argc < 2)
 	{
@@ -19,15 +19,19 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		char *endptr;
-		long num = strtol(argv[i], &endptr, 10);
+		char *ptr;
 
-		if (*endptr != '\0' || num < 0)
+		ptr = argv[i];
+		for (a = 0; ptr[a] != '\0'; a++)
 		{
-			printf("Error\n");
-			return (1);
+			if (ptr[a] < 48 || ptr[a] > 57)
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
-		sum += (int)num;
+		num = atoi(ptr);
+		sum += num;
 	}
 
 	printf("%d\n", sum);
