@@ -8,43 +8,28 @@
  */
 int main(int argc, char *argv[])
 {
-	int num, hold;
+	int num, a, count = 0;
+	int str[] = {25, 10, 5, 2, 1};
 
-	if (argc == 2)
+	if (argc != 2)
 	{
+		printf("Error\n");
+		return (1);
+	}
 		num = atoi(argv[1]);
 		if (num < 0)
 		{
 			printf("0\n");
 			return (0);
 		}
-		if (num >= 25)
-		{
-			hold = num / 25;
-			num = num % 25;
-		}
-		if (num >= 10)
-		{
-			hold = hold + (num / 10);
-			num = num % 10;
-		}
-		if (num >= 5)
-		{
-			hold = hold + (num / 5);
-			num = num % 5;
-		}
-		if (num >= 2)
-		{
-			hold = hold + (num / 2);
-			num = num % 2;
-		}
-		hold = hold + num;
-		printf("%d\n", hold);
-	}
-	else
-	{
-		printf("Error\n");
-		return (1);
-	}
-	return (0);
+			for (a = 0; a < 5; a++)
+			{
+				while (num >= str[a])
+				{
+					num -= str[a];
+					count++;
+				}
+			}
+			printf("%d\n", count);
+		return (0);
 }
