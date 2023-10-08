@@ -7,42 +7,44 @@
  * @s1: the first string
  * @s2: the second string
  * @n: the string length of s2
- * Return: the memory allocated to the pointer to theconcatenated string
+ * Return: the memory allocated to the pointer to the concatenated string
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int len_2 = strlen(s2), a, b;
-	unsigned int len_1 = strlen(s1);
+	unsigned int len1 = 0, len2 = 0;
 	char *str;
+	unsigned int i, j;
 
-	if (s1 == NULL || s2 == NULL)
-	{
+
+	if (s1 == NULL)
 		s1 = "";
+	if (s2 == NULL)
 		s2 = "";
-	}
-	if (n >= len_2)
-	n = len_2;
-	str = malloc((len_2 + len_1 + 1) * sizeof(char));
 
+
+	while (s1[len1] != '\0')
+		len1++;
+	while (s2[len2] != '\0')
+		len2++;
+
+
+	if (n >= len2)
+		n = len2;
+
+
+	str = (char *)malloc(len1 + n + 1);
 	if (str == NULL)
-	{
 		return (NULL);
-	}
 
-	for (a = 0; a < len_1; a++)
-	{
-		str[a] = s1[a];
-	}
 
-	if (n >= len_2)
-	{
-		for (b = 0; b < len_2; b++)
-		{
-			str[len_1] = s2[b];
-			len_1++;
-		}
-	}
+	for (i = 0; i < len1; i++)
+		str[i] = s1[i];
 
-	str[len_1] = '\0';
+
+		str[i + j] = s2[j];
+
+
+	str[i + j] = '\0';
+
 	return (str);
 }
