@@ -8,9 +8,9 @@
 */
 struct dog
 {
-	char *name;
+	char name[50];
 	float age;
-	char *owner;
+	char owner[50];
 };
 
 void init_dog(struct dog *d, char *name, float age, char *owner);
