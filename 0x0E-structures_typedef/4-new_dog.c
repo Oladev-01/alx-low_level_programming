@@ -3,33 +3,21 @@
 #include "dog.h"
 #include <string.h>
 /**
- * _strdup - this function returns a pointer to an allocated
- * memory that contains a copy of a string
- * @str: the string to be copied is parsed here
- *Return: a pointer to a string that contains the copy
+ *char *_strcpy - entry
+ *@dest: copy
+ *@src: copied
+ *Return: 0
  */
-char *_strdup(char *str)
+char *_strcpy(char *dest, char *src)
 {
-	int len;
-	int a = 0;
-	char *s;
+	int a;
 
-	if (str == NULL)
+	for (a = 0; src[a] != '\0'; a++)
 	{
-		return (NULL);
+		dest[a] = src[a];
 	}
-	len = strlen(str);
-	s = (char *)malloc((len + 1) * sizeof(*str));
-	if (s == NULL)
-	{
-		return (NULL);
-	}
-	while (a < len)
-	{
-		s[a] = str[a];
-		a++;
-	}
-	return (s);
+	dest[a++] = '\0';
+	return (dest);
 }
 
 /**
@@ -42,6 +30,8 @@ char *_strdup(char *str)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	int len_1 = strlen(name);
+	int len = strlen(owner);
 	dog_t *bad_dog = malloc(sizeof(dog_t));
 
 	if (bad_dog == NULL)
@@ -49,19 +39,20 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	bad_dog->age = age;
 
-	bad_dog->name = _strdup(name);
+	bad_dog->name = malloc((len_1 + 1) * sizeof(*name));
 	if (bad_dog->name == NULL)
 	{
 		free(bad_dog);
 		return (NULL);
 	}
-
-	bad_dog->owner = _strdup(owner);
+	_strcpy(bad_dog->name, name);
+	bad_dog->owner = malloc((len + 1) * sizeof(*owner));
 	if (bad_dog->owner == NULL)
 	{
 		free(bad_dog);
 		free(bad_dog->name);
 		return (NULL);
 	}
+	_strcpy(bad_dog->owner, owner);
 	return (bad_dog);
 }
