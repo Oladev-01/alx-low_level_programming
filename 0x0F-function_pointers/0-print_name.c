@@ -10,7 +10,8 @@
  *@f: the pointer to a function
  * Return: void
  */
-void print_name(char *name, void (*f)(char *))
+typedef void (*func) (char *str);
+void print_name(char *name, func f)
 {
 	f(name);
 }
