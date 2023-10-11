@@ -10,8 +10,9 @@
  *@f: the pointer to a function
  * Return: void
  */
-typedef void (*func) (char *str);
 void print_name(char *name, func f)
 {
+	if (name == NULL || f == NULL)
+		return;
 	f(name);
 }
