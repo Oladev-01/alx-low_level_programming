@@ -9,26 +9,21 @@
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
 	va_list ptr;
-	ola i = 0, a;
+	ola a;
 
-	if (separator == NULL)
-		return;
-	if (separator)
-	{
-		while (separator[i] != 0)
-		{
-			printf("%c", separator[i]);
-			i++;
-		}
-	}
 	va_start(ptr, n);
 
 	for (a = 0; a < n; a++)
 	{
 		printf("%d", va_arg(ptr, ola));
-		if (a != (n - 1))
+		if (a != n - 1)
 		{
-			printf(", ");
+			if (separator == NULL)
+				return;
+			if (separator)
+			{
+				printf("%s", separator);
+			}
 		}
 	}
 	printf("\n");
