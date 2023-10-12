@@ -4,6 +4,7 @@
  * the integers passed as arguments
  *@separator: this is the string to be printed
  *@n: the first integer
+  * ola - this is the typedef for unsigned int
  *Return: void
  */
 void print_numbers(const char *separator, const unsigned int n, ...)

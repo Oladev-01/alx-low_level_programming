@@ -3,6 +3,8 @@
  * print_strings - this function prints strings passsed as arguments
  * @separator: the string that separates each strings
  * @n: the number of string to be printed
+ *qun - this is the typedef for char*
+ *ola - this is the typedef for unsigned int
  * Return: void
  */
 void print_strings(const char *separator, const unsigned int n, ...)
