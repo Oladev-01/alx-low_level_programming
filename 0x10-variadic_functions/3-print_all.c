@@ -1,16 +1,6 @@
 #include "variadic_functions.h"
 #include <stdbool.h>
 /**
- *retformat - this function returns the character as c or i or f or s
- * @c: the chatracter variable to be returned
- *Return: void
- */
-int retformat(char c)
-{
-	return (c == 'c' || c == 'i' || c == 'f' || c == 's');
-}
-
-/**
  * print_all - this function prints various data types
  * @format: this string contains the format(data type) of the arguments
  *Return: void
@@ -19,41 +9,39 @@ int retformat(char c)
 void print_all(const char * const format, ...)
 {
 	va_list ptr;
-	bool comma = false;
-	const char *str;
+	qun str, sp = "";
+	int a = 0;
 
 	va_start(ptr, format);
-
-	str = format;
-
-	while (*str)
+	if (format)
 	{
-		if (retformat(*str))
+		while (format[a])
 		{
-			if (comma)
-				printf(", ");
-			comma = true;
-			if (*str == 'c')
+			switch (format[a])
 			{
-				int c = va_arg(ptr, int);
-
-				printf("%c", c);
+				case 'c':
+					printf("%s%c", sp, va_arg(ptr, int));
+					break;
+				case 'i':
+					printf("%s%d", sp, va_arg(ptr, int));
+					break;
+				case 'f':
+					printf("%s%f", sp, va_arg(ptr, double));
+					break;
+				case 's':
+					str = va_arg(ptr, qun);
+					if (str != NULL)
+						printf("%s%s", sp, str);
+					else
+						printf("(nil)");
+					break;
+				default:
+					a++;
+					continue;
 			}
-			else if (*str == 'i')
-				printf("%d", va_arg(ptr, int));
-			else if (*str == 'f')
-				printf("%f", (float)va_arg(ptr, double));
-			if (*str == 's')
-			{
-				qun get = va_arg(ptr, qun);
-
-				if (get == NULL)
-					printf("(nil)");
-				else
-					printf("%s", get);
-			}
+			sp = ", ";
+			a++;
 		}
-		str++;
 	}
 	printf("\n");
 	va_end(ptr);
