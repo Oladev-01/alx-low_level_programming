@@ -1,0 +1,36 @@
+#include "variadic_functions.h"
+/**
+ * print_numbers - this function prints a string as well as
+ * the integers passed as arguments
+ *@separator: this is the string to be printed
+ *@n: the first integer
+ *Return: void
+ */
+void print_numbers(const char *separator, const unsigned int n, ...)
+{
+	va_list ptr;
+	ola i = 0, a;
+
+	if (separator == NULL)
+		return;
+	if (separator)
+	{
+		while (separator[i] != 0)
+		{
+			printf("%c", separator[i]);
+			i++;
+		}
+	}
+	va_start(ptr, n);
+
+	for (a = 0; a < n; a++)
+	{
+		printf("%d", va_arg(ptr, ola));
+		if (a != (n - 1))
+		{
+			printf(", ");
+		}
+	}
+	printf("\n");
+	va_end(ptr);
+}
