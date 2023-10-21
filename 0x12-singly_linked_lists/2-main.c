@@ -42,6 +42,6 @@ int main(void)
     add_node(&head, "William");
     add_node(&head, "Zee");
     print_list(head);
-    
+    free_list(head);
     return (0);
 }
