@@ -1,4 +1,5 @@
 #include "main.h"
+#define BITS (sizeof(int) * 8)
 /**
  *get_bit - this function returns the bit at an index
  *@n: this is the number passed
@@ -7,15 +8,9 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned long int num, i = n;
-	unsigned int check_index = 0;
+	unsigned long int num;
 
-	while (i > 0)
-	{
-		check_index++;
-		i >>= 1;
-	}
-	if (index >= check_index)
+	if (index > BITS - 1)
 		return (-1);
 	num = (n >> index) & 1;
 	return (num);
