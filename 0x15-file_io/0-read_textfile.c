@@ -11,7 +11,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	FILE *fp = NULL;
 	ssize_t num = 0;
-	size_t i = 0;
+	size_t i = 0, a;
 	char *str, ch;
 
 	if (filename == NULL)
@@ -28,7 +28,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		i++;
 		num++;
 	}
-	write(1, str, letters);
+	a = write(1, str, letters);
+	if (a != letters)
+		return (0);
 	return (num);
 	fclose(fp);
 }
