@@ -9,41 +9,30 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fp = NULL;
-	ssize_t num = 0;
-	size_t i = 0, a;
-	char *str, ch;
+	int file_op;
+	ssize_t num, a;
+	char *str;
 
 	if (filename == NULL)
 		return (0);
-	fp = fopen(filename, "r");
-	if (fp == NULL)
+	file_op = open(filename, O_RDONLY);
+	if (file_op == -1)
 		return (0);
-	if (letters < 0)
-	{
-		fclose(fp);
-		return (0);
-	}
 	str = malloc(letters);
 	if (str == NULL)
 	{
-		fclose(fp);
+		close(file_op);
 		return (0);
 	}
-	while ((ch = getc(fp)) != EOF && i < letters)
+	num = read(file_op, str, letters);
+	close(file_op);
+	if (num == -1)
 	{
-		str[i] = ch;
-		i++;
-		num++;
-	}
-	a = write(1, str, letters);
-	if (a != letters)
-	{
-		fclose(fp);
+		free(str);
 		return (0);
 	}
-	fclose(fp);
-	return (num);
-
+	a = write(STDOUT_FILENO, str, num);
+	if (num != a)
+	return (0);
+	return (a);
 }
-
