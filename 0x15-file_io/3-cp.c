@@ -9,7 +9,7 @@ int main(int ac, char **av)
 {
 	int file_from, file_to;
 	char buffer[BUFF_SIZE];
-	ssize_t num, a;
+	ssize_t num;
 
 	if (ac != 3)
 	{
