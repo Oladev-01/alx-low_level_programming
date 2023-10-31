@@ -21,8 +21,11 @@ int create_file(const char *filename, char *text_content)
 		text_content = " ";
 	len = strlen(text_content);
 	num = write(file_op, text_content, len);
-	close(file_op);
 	if (num == -1)
+	{
+		close(file_op);
 		return (-1);
+	}
+	close(file_op);
 	return (1);
 }
