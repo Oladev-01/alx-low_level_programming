@@ -47,7 +47,7 @@ void cpy(const char *file_from, const char *file_to)
 		exit(99);
 	}
 	num = read(from_s, buffer, BUFF_SIZE);
-	if (num == -1 || num == 0)
+	if (num == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		close(from_s);
