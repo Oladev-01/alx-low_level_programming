@@ -21,7 +21,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	str = malloc(letters);
 	if (str == NULL)
+	{
+		fclose(fp);
 		return (0);
+	}
 	while ((ch = getc(fp)) != EOF && i < letters)
 	{
 		str[i] = ch;
