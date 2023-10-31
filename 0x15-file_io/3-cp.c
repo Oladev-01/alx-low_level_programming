@@ -1,62 +1,89 @@
 #include "main.h"
 #define BUFF_SIZE 1024
 /**
- *
- *
- *
+ * main - this is the main function
+ *@ac: this is the number of arguments passed
+ *@av: this is the argument passed
+ *Return: 0 in success
  */
 int main(int ac, char **av)
 {
-	int file_from, file_to;
-	char buffer[BUFF_SIZE];
-	ssize_t num;
+	const char *file_from, *file_to;
 
 	if (ac != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	file_from = open(av[1], O_RDONLY);
-	if (file_from == -1)
+	file_from = av[1];
+	file_to = av[2];
+	cpy(file_from, file_to);
+	return (0);
+}
+
+/**
+ * cpy - this functions copy from file_from to file_to
+ *@file_from: this is the file to be copied from
+ *@file_to: the file copying into
+ *Return: void
+ */
+void cpy(const char *file_from, const char *file_to)
+{
+	int from_s, to_dest;
+	char buffer[BUFF_SIZE];
+	ssize_t num;
+
+	from_s = open(file_from, O_RDONLY);
+	if (from_s == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", av[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
-	file_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (file_to == -1)
+	to_dest = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 664);
+	if (to_dest == -1)
 	{
-		close(file_from);
-		dprintf(2, "Error: Can't write to %s\n", av[2]);
+		close(from_s);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
-	while ((num = read(file_from, buffer, BUFF_SIZE)) > 0)
+	while ((num = read(from_s, buffer, BUFF_SIZE)) > 0)
 	{
-		if (write(file_to, buffer, num) == -1)
+		if (write(to_dest, buffer, num) == -1)
 		{
-			close(file_from);
-			close(file_to);
-			dprintf(2, "Error: Can't write to %s\n", av[2]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+			close(from_s);
+			close(to_dest);
 			exit(99);
 		}
 	}
+	close(from_s);
+	close(to_dest);
 	if (num == -1)
 	{
-		close(file_from);
-		close(file_to);
-		dprintf(2, "Error: Can't read from file %s\n", av[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+		close(from_s);
+		close(to_dest);
 		exit(98);
 	}
-	close(file_from);
-	close(file_to);
-	if (close(file_from) == -1)
+	handle_close(from_s, to_dest);
+}
+
+/**
+ * handle_close - this function handles closing error
+ *@from_s: the pointer to the file file_from
+ *@to_dest: the pointer to the file file_to
+ *Return: void
+ */
+void handle_close(int from_s, int to_dest)
+{
+	if (close(from_s) != 0)
 	{
-		dprintf(2, "Error: Can't close file_from %d\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't close file_from %d\n", from_s);
 		exit(100);
 	}
-	if (close(file_to) == -1)
+	if (close(to_dest) != 0)
 	{
-		dprintf(2, "Error: Can't close file_from %d\n", file_to);
+		dprintf(STDERR_FILENO, "Error: Can't close file_from %d\n", to_dest);
 		exit(100);
 	}
-	return (0);
 }
