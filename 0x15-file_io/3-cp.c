@@ -31,7 +31,7 @@ void cpy(const char *file_from, const char *file_to)
 {
 	int from_s, to_dest;
 	char buffer[BUFF_SIZE];
-	ssize_t num;
+	ssize_t num, a;
 
 	from_s = open(file_from, O_RDONLY);
 	if (from_s == -1)
@@ -39,25 +39,14 @@ void cpy(const char *file_from, const char *file_to)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
-	to_dest = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 664);
+	to_dest = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (to_dest == -1)
 	{
 		close(from_s);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
-	while ((num = read(from_s, buffer, BUFF_SIZE)) > 0)
-	{
-		if (write(to_dest, buffer, num) == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-			close(from_s);
-			close(to_dest);
-			exit(99);
-		}
-	}
-	close(from_s);
-	close(to_dest);
+	num = read(from_s, buffer, BUFF_SIZE);
 	if (num == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
@@ -65,6 +54,15 @@ void cpy(const char *file_from, const char *file_to)
 		close(to_dest);
 		exit(98);
 	}
+	a = write(to_dest, buffer, num);
+	if (a != num)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_to);
+		close(from_s);
+		close(to_dest);
+		exit(99);
+	}
+	chmod(file_to, 0664);
 	handle_close(from_s, to_dest);
 }
 
