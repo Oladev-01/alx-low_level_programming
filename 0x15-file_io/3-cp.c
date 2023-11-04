@@ -77,12 +77,12 @@ void handle_close(int from_s, int to_dest)
 {
 	if (close(from_s) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close file_from %d\n", from_s);
+		dprintf(STDERR_FILENO, "Error: Can't close fd");
 		exit(100);
 	}
 	if (close(to_dest) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close file_from %d\n", to_dest);
+		dprintf(STDERR_FILENO, "Error: Can't close fd");
 		exit(100);
 	}
 }
