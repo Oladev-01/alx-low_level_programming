@@ -100,5 +100,8 @@ void handle_no_read(const char *file_to)
 	if (stat(file_to, &check) == 0 && (check.st_mode & S_IRUSR))
 		exit(98);
 	else
-	exit(0);
+	{
+		dprintf(STDERR_FILENO, "Error: no read permission");
+		exit(0);
+	}
 }
