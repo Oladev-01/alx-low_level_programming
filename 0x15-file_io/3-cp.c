@@ -43,7 +43,8 @@ void cpy(const char *file_from, const char *file_to)
 	if (to_dest == -1)
 	{
 		close(from_s);
-		handle_no_read(file_to);
+		dprintf(STDERR_FILENO, "Error: can't write to %s\n", file_to);
+		exit(99);
 	}
 	while ((num = read(from_s, buffer, sizeof(buffer))) > 0)
 	{
@@ -100,7 +101,6 @@ void handle_no_read(const char *file_to)
 		exit(98);
 	else
 	{
-		dprintf(STDERR_FILENO, "Error: no read permission");
 		exit(0);
 	}
 }
