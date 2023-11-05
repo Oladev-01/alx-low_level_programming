@@ -39,11 +39,12 @@ void cpy(const char *file_from, const char *file_to)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
-	to_dest = open(file_to, O_RDWR | O_CREAT | O_TRUNC, 0664);
+	to_dest = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (to_dest == -1)
 	{
 		close(from_s);
-		handle_no_read(file_to);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		exit(99);
 	}
 	while ((num = read(from_s, buffer, sizeof(buffer))) > 0)
 	{
@@ -97,10 +98,7 @@ void handle_no_read(const char *file_to)
 	struct stat check;
 
 	if (stat(file_to, &check) == 0 && (check.st_mode & S_IRUSR))
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-		exit(99);
-	}
+		exit(98);
 	else
 	{
 		exit(0);
