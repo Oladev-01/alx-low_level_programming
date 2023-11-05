@@ -97,10 +97,10 @@ void handle_no_read(const char *file_to)
 {
 	struct stat check;
 
-	if (stat(file_to, &check) == 0 && (check.st_mode & S_IRUSR))
-		exit(98);
+	if (stat(file_to, &check) == 0 && !(check.st_mode & S_IRUSR))
+		exit(0);
 	else
 	{
-		exit(0);
+		exit(98);
 	}
 }
