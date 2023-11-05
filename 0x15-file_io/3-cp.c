@@ -60,7 +60,7 @@ void cpy(const char *file_from, const char *file_to)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		close(from_s);
 		close(to_dest);
-		exit(98)
+		exit(98);
 	}
 	chmod(file_to, 0664);
 	handle_close(from_s, to_dest);
