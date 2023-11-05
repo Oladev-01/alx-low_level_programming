@@ -43,8 +43,7 @@ void cpy(const char *file_from, const char *file_to)
 	if (to_dest == -1)
 	{
 		close(from_s);
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-		exit(99);
+		handle_no_read(file_to);
 	}
 	while ((num = read(from_s, buffer, sizeof(buffer))) > 0)
 	{
@@ -98,7 +97,10 @@ void handle_no_read(const char *file_to)
 	struct stat check;
 
 	if (stat(file_to, &check) == 0 && (check.st_mode & S_IRUSR))
-		exit(98);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		exit(99);
+	}
 	else
 	{
 		exit(0);
