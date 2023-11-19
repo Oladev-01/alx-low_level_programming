@@ -1,42 +1,24 @@
 #include <stdio.h>
-
 /**
- * main - this function is to print all hexadecimal numbers
- *
- * Return: should return 0 for sucess
- *
+ * main - this program prints all the integers in base 16
+ * Return: 0 on success
  */
-
 int main(void)
-
 {
-	int i = 0;
+	int c, d;
 
-	char lekan = 'a';
-
-
-	while (i <= 9)
-
+	for (c = 0; c < 16; c++)
 	{
-		putchar(i + '0');
-
-			i++;
-
+		if (c > 9)
+		{
+			d = c + 87;
+			putchar(d);
+		}
+		else
+		putchar(c + '0');
 	}
-
-	while (lekan <= 'f')
-
-	{
-		putchar(lekan);
-
-		lekan++;
-
-	}
-
 	putchar('\n');
-
 	return (0);
-
 }
 
 
