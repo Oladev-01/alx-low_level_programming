@@ -14,9 +14,17 @@ listint_t *find_listint_loop(listint_t *head)
 	while (current && loop && current->next)
 	{
 		current = current->next->next;
-		head = head->next;
-		if (current == head)
+		loop = loop->next;
+		if (current == loop)
+		{
+			loop = head;
+			while (loop != current)
+			{
+				loop = loop->next;
+				current = current->next;
+			}
 			return (loop);
+		}
 	}
 	return (NULL);
 }
