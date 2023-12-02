@@ -8,11 +8,11 @@
 */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *normal, *loop;
 	size_t num = 0;
+	listint_t *normal, *loop;
 
 	if (h == NULL)
-		exit(98);
+		return (0);
 	normal = *h;
 	loop = *h;
 	while (normal && loop->next && loop)
@@ -39,7 +39,8 @@ size_t free_listint_safe(listint_t **h)
 		num++;
 		free(normal);
 	}
-	return (num);
-	*h = NULL;
-}
 
+	*h = NULL;
+	return (num);
+	exit(98);
+}
