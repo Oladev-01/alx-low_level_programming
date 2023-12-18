@@ -1,7 +1,7 @@
 #include "lists.h"
 /**
  * free_listint_safe - this function frees lists with the
- * possibility of a loop
+ * possibility of a fast
  * @h: this is the pointer to the pointer to the h of the
  * h of the list
  * Return: the size of the list
@@ -9,35 +9,27 @@
 size_t free_listint_safe(listint_t **h)
 {
 	size_t num = 0;
-	listint_t *normal, *loop;
+	listint_t *slow, *fast;
 
-	if (h == NULL)
-		return (0);
-	normal = *h;
-	loop = *h;
-	while (normal && loop->next && loop)
+	if (h == NULL || *h == NULL)
+		exit(98);
+	slow = *h;
+	while (slow && fast && fast->next)
 	{
-		loop = loop->next->next;
-		normal = normal->next;
-		if (normal == loop)
-			break;
-	}
-	if (normal == loop)
-	{
-		normal = *h;
-		while (normal->next != loop->next)
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow->next == fast->next)
 		{
-			normal = normal->next;
-			loop = loop->next;
+			fast->next = NULL;
+			break;
 		}
-		loop->next = NULL;
 	}
 	while (*h != NULL)
 	{
-		normal = *h;
+		slow = *h;
 		*h = (*h)->next;
 		num++;
-		free(normal);
+		free(slow);
 	}
 
 	*h = NULL;
