@@ -9,10 +9,10 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
 	dlistint_t *ptr, *current;
 
-	ptr = malloc(sizeof(dlistint_t));
+	ptr = malloc(sizeof(dlistint_t)); /* this allocates memory for the new node*/
 	if (head == NULL || ptr == NULL)
-		return (NULL);
-	ptr->n = n;
+		return (NULL); /* this checks the allocation is successful*/
+	ptr->n = n; /* this is the data to be inserted*/
 	ptr->next = NULL;
 	ptr->prev = NULL;
 	if (*head == NULL)
@@ -20,7 +20,8 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 	else
 	{
 		current = *head;
-		while (current && current->next)
+		while (current && current->next) /* this make sure the pointer stops-*/
+			/* at the last node of the list*/
 			current = current->next;
 		current->next = ptr;
 		ptr->prev = current;
