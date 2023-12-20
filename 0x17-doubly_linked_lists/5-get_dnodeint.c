@@ -18,12 +18,11 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 	if (index == 0)
 		return (ptr);
 
-	while (ptr->next && num < index)
+	while (ptr && num < index)
 	{
 		ptr = ptr->next;
 		num++;
 	}
-	if (!ptr->next)
-		return (NULL);
+
 	return (ptr);
 }
