@@ -15,5 +15,9 @@ void free_dlistint(dlistint_t *head)
 		ptr = head;
 		head = head->next;
 		free(ptr);
+	/**
+	*i free each node of the list thereby freeing
+	the memory allocated for the structure
+	**/
 	}
 }
