@@ -1,0 +1,10 @@
+# this makefile builds an executable "school"
+all: school
+
+CC := gcc
+SRC := main.c school.c
+school: ${SRC}
+	${CC} ${SRC} -o school
+clean:
+	rm school
+
