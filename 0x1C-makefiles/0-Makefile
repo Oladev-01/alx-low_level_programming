@@ -1,0 +1,4 @@
+# this makefile builds an executable named school from the source files
+all: school
+school: main.c school.c m.h
+	gcc main.c school.c -o school
