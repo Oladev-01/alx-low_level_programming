@@ -5,6 +5,3 @@ CC := gcc
 SRC := main.c school.c
 school: ${SRC}
 	${CC} ${SRC} -o school
-clean:
-	rm school
-
