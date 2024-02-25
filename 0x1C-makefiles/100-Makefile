@@ -1,6 +1,6 @@
 # this makefile builds an executable with other automated procedures
 CC = gcc
-SRC = main.c school.c 
+SRC = main.c school.c m.h
 OBJ = $(SRC:.c=.o)
 NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
@@ -10,7 +10,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $^ -o $@
 
-main.o: main.c m.h
+main.o: main.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
