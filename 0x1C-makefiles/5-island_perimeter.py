@@ -8,7 +8,7 @@ def island_perimeter(grid):
     for i in range(len(grid)):
         for j in range(len(grid[0])):
             if grid[i][j] == 1:  # Check if it's a land cell
-                perimeter += 4  # Each land cell contributes 4 units to perimeter
+                perimeter += 4
 
                 # Check neighbors and subtract 2 units for each shared boundary
                 if i > 0 and grid[i - 1][j] == 1:
