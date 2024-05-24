@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+# this script debugs the program server
+sudo service apache2 start
