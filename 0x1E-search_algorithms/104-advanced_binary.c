@@ -40,7 +40,7 @@ int advanced_binary_recursive(int array[], size_t low, size_t high, int value)
 		}
 		if (array[mid] == value)
 		{
-			if (mid == low || low == high || array[mid - 1] != value)
+			if (low == high || array[mid - 1] != value)
 				return (mid);
 			else
 				return (advanced_binary_recursive(array, low, mid, value));
@@ -50,6 +50,5 @@ int advanced_binary_recursive(int array[], size_t low, size_t high, int value)
 		else if (array[mid] > value)
 			return (advanced_binary_recursive(array, low, mid - 1, value));
 	}
-
 	return (-1);
 }
