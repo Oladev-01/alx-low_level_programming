@@ -4,6 +4,6 @@
 
 int main()
 {
-    size_t data = floor(sqrt(12));
+    size_t data = 2 < 5 ? 2 : 5;
         printf("%ld\n", data);
 }
