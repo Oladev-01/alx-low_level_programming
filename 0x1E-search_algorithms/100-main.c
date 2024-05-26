@@ -1,19 +1,56 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <math.h>
 #include "search_algos.h"
 
 /**
- * main - Entry point
+ * jump_list - Searches for a value in a sorted singly linked list
+ *             using the Jump search algorithm
+ * @list: Pointer to the head of the list
+ * @size: Number of nodes in the list
+ * @value: Value to search for
  *
- * Return: Always EXIT_SUCCESS
+ * Return: Pointer to the first node where value is located, or NULL if not found
  */
-int main(void)
+listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-    int array[] = {
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    size_t size = sizeof(array) / sizeof(array[0]);
+	size_t step, prev_idx;
+	listint_t *prev, *current;
 
+	if (list == NULL || size == 0)
+		return (NULL);
 
-    printf("Found %d at index: %d\n", 999, jump_search(array, size, 999));
-    return (EXIT_SUCCESS);
+	step = sqrt(size);
+	prev = list;
+	current = list;
+
+	// Perform jumps to find the block where the value may be present
+	while (current->index + step < size && current->n < value)
+	{
+		prev = current;
+		for (prev_idx = current->index; current->index < prev_idx + step && current->next; current = current->next)
+			;
+		printf("Value checked at index [%lu] = [%d]\n", current->index, current->n);
+		if (current->n >= value)
+			break;
+	}
+
+	// If we have reached beyond the last node in jumps
+	if (current->index + step >= size)
+	{
+		prev = current;
+		while (current->next)
+			current = current->next;
+	}
+
+	printf("Value found between indexes [%lu] and [%lu]\n", prev->index, current->index);
+
+	// Perform linear search in the block found
+	for (; prev && prev->index <= current->index; prev = prev->next)
+	{
+		printf("Value checked at index [%lu] = [%d]\n", prev->index, prev->n);
+		if (prev->n == value)
+			return (prev);
+	}
+
+	return (NULL);
 }

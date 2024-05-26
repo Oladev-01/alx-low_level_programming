@@ -4,6 +4,11 @@
 
 int main()
 {
-    size_t data = floor(3.5);
-        printf("%ld\n", data);
+    typedef listint_f{
+        int n;
+        struct listint_f *next;
+    } node;
+    
+    node *data = NULL;
+        printf("%ld\n", data->next);
 }
