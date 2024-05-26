@@ -4,11 +4,6 @@
 
 int main()
 {
-    typedef listint_f{
-        int n;
-        struct listint_f *next;
-    } node;
-    
-    node *data = NULL;
-        printf("%ld\n", data->next);
+    int data = ceil(7 + 0)/2;
+    printf("data = %d\n", data);
 }
